@@ -14,3 +14,6 @@ Route ::get('/school', function(){
 Route ::get('/about', function(){
     return view('about');
 });
+Route ::get('/students/{id}', function(string $id) {
+    return "Student ID: {$id}";
+})->name('students.show');
