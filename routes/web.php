@@ -11,3 +11,6 @@ Route ::get('/hello', function() {
 Route ::get('/school', function(){
     return 'Welcome to our Laravel Class!';
 });
+Route ::get('/about', function(){
+    return view('about');
+});
