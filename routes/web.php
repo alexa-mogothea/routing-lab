@@ -17,3 +17,6 @@ Route ::get('/about', function(){
 Route ::get('/students/{id}', function(string $id) {
     return "Student ID: {$id}";
 })->name('students.show');
+Route ::get('/welcome/{name}', function(?string $name='Student') {
+    return "Welcome, {$name}!";
+});
