@@ -20,3 +20,9 @@ Route ::get('/students/{id}', function(string $id) {
 Route ::get('/welcome/{name}', function(?string $name='Student') {
     return "Welcome, {$name}!";
 });
+Route :: get ('/courses', function (){
+    return 'Course list'; 
+})->name ('courses.index');
+Route :: get ('/course-url', function () {
+    return route ('courses.index');
+});
