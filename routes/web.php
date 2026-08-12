@@ -28,6 +28,6 @@ Route :: get ('/course-url', function () {
 });
 Route ::redirect ('/old-about', '/about');
 
-Route ::get('/go-to courses', function(){
+Route ::get('/go-to-courses', function(){
     return to_route('courses.index');
 });
