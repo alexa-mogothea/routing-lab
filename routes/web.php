@@ -17,7 +17,7 @@ Route ::get('/about', function(){
 Route ::get('/students/{id}', function(string $id) {
     return "Student ID: {$id}";
 })->name('students.show');
-Route ::get('/welcome/{name}', function(?string $name='Student') {
+Route ::get('/welcome/{name?}', function(?string $name='Student') {
     return "Welcome, {$name}!";
 });
 Route :: get ('/courses', function (){
@@ -34,18 +34,21 @@ Route ::get('/go-to-courses', function(){
 Route ::get('/tasks', function (){
     return view ('tasks');
 });
-Route ::post('/tasks', function (){
-    return 'POST: Task created successfully!';
+Route::post('/tasks', function () {
+    return 'POST: task created';
 });
-Route ::put('/tasks/{id}', function (string $id){
-    return "PUT: Task with ID {$id} updated successfully!";
+Route::put('/tasks/{id}', function (string $id) {
+    return "PUT: task {$id} replaced";
 });
-Route ::delete('/tasks/{$id}', function (string $id) {
-    return "DELETE: Task with ID {$id} deleted successfully!";
+Route::patch('/tasks/{id}', function (string $id) {
+    return "PATCH: task {$id} updated";
+});
+Route::delete('/tasks/{id}', function (string $id) {
+    return "DELETE: task {$id} removed";
 });
 use App\Http\Controllers\StudentController;
-Route ::get('controller/students', [StudentController::class, 'index']);
-Route ::get('controller/students/{id}', [StudentController::class, 'show']);
+Route ::get('/controller/students', [StudentController::class, 'index']);
+Route ::get('/controller/students/{id}', [StudentController::class, 'show']);
 Route::middleware('throttle:5,1')->get('/limited', function (){
      return 'You reached a rate-limited route.';
 });
@@ -61,7 +64,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route ::get('/greet/{name}', function (string $name) {
     return "Hello, {$name}!";
 });
-Route ::get('/course/{level?}', function (?string $level=beginner) {
+Route ::get('/course/{level?}', function (?string $level='beginner') {
     return "Course level: {$level}";
 });
 Route ::get('/contact', function (){
