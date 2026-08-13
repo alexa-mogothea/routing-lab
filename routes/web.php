@@ -43,3 +43,6 @@ Route ::put('tasks/{id}', function (string $id){
 Route ::delete('tasks/{$id}', function (string $id) {
     return "DELETE: Task with ID {$id} deleted successfully!";
 });
+use App\Http\Controllers\StudentController;
+Route ::get('controller/students', [StudentController::class, 'index']);
+Route ::get('controller/students/{id}', [StudentController::class, 'show']);
