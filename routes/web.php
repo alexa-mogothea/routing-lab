@@ -79,3 +79,17 @@ Route ::get('/feedback', function (){
 Route ::delete('/feedback/{id}', function (string $id) {
     return "DELETE:feedback with ID {$id} deleted successfully!";
 });
+use App\Http\Controllers\CourseController;
+Route::get('/controller/courses', [CourseController::class, 'index']);
+Route::prefix('instructor')
+    ->name('instructor.')
+    ->middleware('throttle:10,1')
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return 'Instructor dashboard';
+        })->name('dashboard');
+
+        Route::get('/courses', function () {
+            return 'Instructor courses';
+        })->name('courses.index');
+    });
