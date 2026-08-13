@@ -37,10 +37,10 @@ Route ::get('/tasks', function (){
 Route ::post('/tasks', function (){
     return 'POST: Task created successfully!';
 });
-Route ::put('tasks/{id}', function (string $id){
+Route ::put('/tasks/{id}', function (string $id){
     return "PUT: Task with ID {$id} updated successfully!";
 });
-Route ::delete('tasks/{$id}', function (string $id) {
+Route ::delete('/tasks/{$id}', function (string $id) {
     return "DELETE: Task with ID {$id} deleted successfully!";
 });
 use App\Http\Controllers\StudentController;
@@ -57,4 +57,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/students', function () {
         return 'Admin student list';
     })->name('students.index');
+});
+Route ::get('/greet/{name}', function (string $name) {
+    return "Hello, {$name}!";
+});
+Route ::get('/course/{level?}', function (?string $level=beginner) {
+    return "Course level: {$level}";
+});
+Route ::get('/contact', function (){
+    return view ('contact');
+   })->name('contact.show');
+Route ::get('/support', function (){
+    return to_route('contact.show');
+});
+Route ::get('/feedback', function (){
+    return view ('feedback');
+});
+    Route::post('/feedback', function () {
+    return 'Feedback received';
+});
+Route ::delete('/feedback/{id}', function (string $id) {
+    return "DELETE:feedback with ID {$id} deleted successfully!";
 });
