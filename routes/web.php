@@ -49,4 +49,12 @@ Route ::get('controller/students/{id}', [StudentController::class, 'show']);
 Route::middleware('throttle:5,1')->get('/limited', function (){
      return 'You reached a rate-limited route.';
 });
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', function () {
+        return 'Admin dashboard';
+    })->name('dashboard');
 
+    Route::get('/students', function () {
+        return 'Admin student list';
+    })->name('students.index');
+});
