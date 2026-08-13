@@ -46,3 +46,7 @@ Route ::delete('tasks/{$id}', function (string $id) {
 use App\Http\Controllers\StudentController;
 Route ::get('controller/students', [StudentController::class, 'index']);
 Route ::get('controller/students/{id}', [StudentController::class, 'show']);
+Route::middleware('throttle:5,1')->get('/limited', function (){
+     return 'You reached a rate-limited route.';
+});
+
