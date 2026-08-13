@@ -31,3 +31,15 @@ Route ::redirect ('/old-about', '/about');
 Route ::get('/go-to-courses', function(){
     return to_route('courses.index');
 });
+Route ::get('/tasks', function (){
+    return view ('tasks');
+});
+Route ::post('/tasks', function (){
+    return 'POST: Task created successfully!';
+});
+Route ::put('tasks/{id}', function (string $id){
+    return "PUT: Task with ID {$id} updated successfully!";
+});
+Route ::delete('tasks/{$id}', function (string $id) {
+    return "DELETE: Task with ID {$id} deleted successfully!";
+});
